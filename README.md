@@ -1,59 +1,89 @@
-# ProductDashboard
+# Product Dashboard (Angular)
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.1.3.
+## Overview
 
-## Development server
+Product Dashboard is a simple Angular application that displays products fetched from an API and provides features like search, filtering, and pagination. The project was built as a practice project to strengthen concepts like Angular Reactive Forms, RxJS, API integration, and component architecture.
 
-To start a local development server, run:
+## Features
 
-```bash
+* Product listing dashboard
+* Search functionality with debounce
+* Category filtering
+* Client-side pagination
+* API integration using Angular HttpClient
+* Reactive Forms for search and filtering
+* Optimized API caching using RxJS
+
+## Tech Stack
+
+* Angular
+* TypeScript
+* RxJS
+* Bootstrap
+* REST API (dummyjson)
+
+## Project Structure
+
+* `product-dashboard` – main container component
+* `product-list` – displays paginated product list
+* `filter-list` – handles filtering and categories
+* `product.service` – handles API calls and caching
+
+## Installation
+
+Clone the repository:
+
+```
+git clone https://github.com/yourusername/product-dashboard.git
+```
+
+Install dependencies:
+
+```
+npm install
+```
+
+Run the application:
+
+```
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Open in browser:
 
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
+```
+http://localhost:4200
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## Build for Production
 
-```bash
-ng generate --help
+```
+ng build --configuration production
 ```
 
-## Building
+Production files will be generated in:
 
-To build the project run:
-
-```bash
-ng build
+```
+dist/product-dashboard
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+## Deployment
 
-## Running unit tests
+The application can be deployed to static hosting platforms like:
 
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+* Vercel
+* Netlify
+* GitHub Pages
+* Firebase Hosting
 
-```bash
-ng test
-```
+Upload the contents of the `dist/product-dashboard` folder to your hosting provider.
 
-## Running end-to-end tests
+## Learning Objectives
 
-For end-to-end (e2e) testing, run:
+This project helped practice:
 
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+* Angular component architecture
+* Reactive Forms and `valueChanges`
+* RxJS operators
+* API data handling
+* Frontend performance concepts like caching

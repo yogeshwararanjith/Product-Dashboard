@@ -67,7 +67,7 @@ Production files will be generated in:
 dist/product-dashboard
 ```
 
-## Deployment
+<!-- ## Deployment
 
 The application can be deployed to static hosting platforms like:
 
@@ -76,7 +76,7 @@ The application can be deployed to static hosting platforms like:
 * GitHub Pages
 * Firebase Hosting
 
-Upload the contents of the `dist/product-dashboard` folder to your hosting provider.
+Upload the contents of the `dist/product-dashboard` folder to your hosting provider. -->
 
 ## Learning Objectives
 

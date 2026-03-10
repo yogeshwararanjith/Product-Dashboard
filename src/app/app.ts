@@ -1,5 +1,5 @@
 import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -8,5 +8,10 @@ import { RouterOutlet } from '@angular/router';
   styleUrl: './app.scss'
 })
 export class App {
-  protected readonly title = signal('product-dashboard');
+  // protected readonly title = signal('tabs');
+  
+  constructor(private router:Router){}
+  gotodashborad(){
+    this.router.navigate(['/dashboard']);
+  }
 }

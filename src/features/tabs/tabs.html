@@ -1,0 +1,13 @@
+<div class="tab">
+@for (tab of tabs; track $index) {
+    <div>
+        <button [class.active]="tab.id === activeTabId" (click)="tabClick($event)"  [attr.data-tab]="tab.id">{{tab.label}}</button>
+    </div>
+}
+</div>
+
+    <div class="panel">
+@for (panel of panels; track $index){
+        <p *ngIf="panel.id === activeTabId.replace('tab-','panel-')" [attr.data-panel]="panel.id">{{panel.desc}}</p>
+}
+    </div>

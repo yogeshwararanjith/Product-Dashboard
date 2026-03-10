@@ -1,0 +1,170 @@
+<div class="container-fluid p-3">
+
+  <!-- CARDS VIEW (Mobile & Tablet: visible up to lg) -->
+  <div class="d-lg-none">
+<div class="">
+    <div class="d-flex justify-content-between">
+    <div class="col-2 col-md-2 col-lg-2">
+    <h5 class="mb-4">Products</h5>
+    </div>
+    <div class="col-4 col-md-4 col-lg-4">
+      <form class="form-inline" role="search" [formGroup]="searchForm">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"
+        formControlName="searchControl">
+        <!-- <button class="btn btn-outline-success" type="submit">Search</button> -->
+      </form>
+    </div>
+    <div class="d-flex align-items-center gap-2">
+        <button class="btn btn-sm btn-outline-secondary" (click)="onPrevious()" [disabled]="pageSignal() === 0">
+      <span class="material-symbols-outlined" style="font-size: 20px;">
+        keyboard_double_arrow_left
+      </span>
+    </button>
+    <span class="small text-muted">
+        {{pageSignal() + 1}} of {{getTotalPages()}}
+    </span>
+     <button class="btn btn-sm btn-outline-secondary" (click)="onNext()" [disabled]="pageSignal() >= getTotalPages() - 1">
+      <span class="material-symbols-outlined" style="font-size: 20px;">
+        keyboard_double_arrow_right
+      </span>
+    </button>
+    </div>
+    <div class="text-right">
+    <button class="btn btn-outline-secondary" type="button" data-bs-toggle="modal" data-bs-target="#filterModal">
+        Filter
+    </button>
+    </div>
+    </div>
+    </div> 
+    <div class="row">
+      @for (product of paginatedProducts(); track product.id) {
+        <div class="col-12 col-sm-6 mb-4">
+          <div class="card h-100 shadow-sm">
+            <div class="card-body">
+              <h6 class="card-title text-truncate">{{ product.title }}</h6>
+              <p class="card-text small text-muted text-truncate">{{ product.description }}</p>
+              
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                <span class="badge bg-secondary">{{ product.category }}</span>
+                <span class="badge bg-info">{{ product.brand }}</span>
+              </div>
+
+              <div class="d-flex justify-content-between align-items-end mb-3">
+                <div>
+                  <p class="mb-0 small text-muted">Price</p>
+                  <h5 class="mb-0">${{ product.price }}</h5>
+                </div>
+                <div class="text-end">
+                  <p class="mb-0 small text-muted">Rating</p>
+                  <span class="badge bg-warning text-dark">{{ product.rating }}</span>
+                </div>
+              </div>
+
+              <div class="mb-3">
+                <small class="text-muted d-block mb-2">Tags:</small>
+                <div>
+                  @for (tag of product.tags; track tag) {
+                    <span class="badge bg-primary me-1 mb-1">{{ tag }}</span>
+                  }
+                </div>
+              </div>
+
+              <button class="btn btn-sm btn-primary w-100">View Details</button>
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+
+  <!-- TABLE VIEW (Desktop: lg and up) -->
+  <div class="d-none d-lg-block">
+ <div class="">
+    <div class="d-flex justify-content-between">
+    <div class="col-2 col-md-2 col-lg-2">
+    <h5 class="mb-4">Products</h5>
+    </div>
+    <div class="col-2 col-md-2 col-lg-2">
+      <form class="form-inline" role="search" [formGroup]="searchForm">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"
+        formControlName="searchControl">
+        <!-- <button class="btn btn-outline-success" type="submit">Search</button> -->
+      </form>
+    </div>
+    <div class="d-flex align-items-center gap-2">
+        <button class="btn btn-sm btn-outline-secondary" (click)="onPrevious()" [disabled]="pageSignal() === 0">
+      <span class="material-symbols-outlined" style="font-size: 20px;">
+        keyboard_double_arrow_left
+      </span>
+    </button>
+    <span class="small text-muted">
+        {{pageSignal() + 1}} of {{getTotalPages()}}
+    </span>
+     <button class="btn btn-sm btn-outline-secondary" (click)="onNext()" [disabled]="pageSignal() >= getTotalPages() - 1">
+      <span class="material-symbols-outlined" style="font-size: 20px;">
+        keyboard_double_arrow_right
+      </span>
+    </button>
+    </div>
+    <div class="text-right">
+    <button class="btn btn-outline-secondary" type="button" data-bs-toggle="modal" data-bs-target="#filterModal">
+        Filter
+    </button>
+    </div>
+    </div>
+    </div> 
+    <div class="table-responsive">
+      <table class="table table-dark table-striped table-hover">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Category</th>
+            <th>Brand</th>
+            <th>Price</th>
+            <th>Rating</th>
+            <th>Tags</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (product of paginatedProducts(); track product.id) {
+            <tr>
+              <td>
+                <span class="text-truncate d-inline-block" style="max-width: 200px;">
+                  {{ product.title }}
+                </span>
+              </td>
+              <td>
+                <span class="badge bg-secondary">{{ product.category }}</span>
+              </td>
+              <td>{{ product.brand }}</td>
+              <td><strong>${{ product.price }}</strong></td>
+              <td>
+                <span class="badge bg-warning text-dark">{{ product.rating }}</span>
+              </td>
+              <td>
+                <div style="max-width: 200px;">
+                  @for (tag of product.tags; track tag) {
+                    <span class="badge bg-primary me-1 mb-1">{{ tag }}</span>
+                  }
+                </div>
+              </td>
+              <td>
+                <button class="btn btn-sm btn-primary">View</button>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Empty State -->
+  @if (!productsList || productsList.length === 0) {
+    <div class="alert alert-info text-center" role="alert">
+      No products found.
+    </div>
+  }
+
+  <app-filter-list [categories]="getCategories()!" (selectedCat)="handleCategory($event)" ></app-filter-list>
+</div>

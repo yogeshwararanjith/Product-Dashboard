@@ -1,0 +1,93 @@
+
+  <div class="modal fade" id="filterModal" tabindex="-1" aria-labelledby="filterModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="filterModalLabel">Filter Products</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      <div class="modal-body">
+        <ul class="nav nav-tabs" id="filterTabs" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="category-tab" data-bs-toggle="tab" data-bs-target="#category" type="button" role="tab" aria-controls="category" aria-selected="true">
+              category
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="price-tab" data-bs-toggle="tab" data-bs-target="#price" type="button" role="tab" aria-controls="price" aria-selected="false">
+              Price
+            </button>
+          </li>
+          <!-- <li class="nav-item" role="presentation">
+            <button class="nav-link" id="search-tab" data-bs-toggle="tab" data-bs-target="#search" type="button" role="tab" aria-controls="search" aria-selected="false">
+              Search
+            </button>
+          </li> -->
+        </ul>
+
+        <div class="tab-content pt-3" id="filterTabContent">
+          <!-- Category Tab -->
+          <div class="tab-pane fade show active" id="category" role="tabpanel" aria-labelledby="category-tab">
+            <div class="mb-3">
+              <label for="categorySelect" class="form-label small">Category</label>
+              <select id="categorySelect" class="form-select"
+              (change)="onCategoryChange($event)">
+                <option value="">All Categories</option>
+                @for(item of categories; track item){
+                <option [value]="item" >{{item}}</option>
+                }
+                <!-- <option value="electronics">Electronics</option>
+                <option value="home">Home</option> -->
+                <!-- replace with dynamic options: *ngFor="let c of categories" -->
+              </select>
+            </div>
+            <div class="mb-2">
+              <label class="form-label small">Brands (optional)</label>
+              <input type="text" class="form-control" placeholder="Comma separated or type to filter">
+            </div>
+          </div>
+
+          <!-- Price Tab -->
+          <div class="tab-pane fade" id="price" role="tabpanel" aria-labelledby="price-tab">
+            <div class="row g-2 mb-3">
+              <div class="col-6">
+                <label for="minPrice" class="form-label small">Min Price</label>
+                <input id="minPrice" type="number" class="form-control" placeholder="0" min="0">
+              </div>
+              <div class="col-6">
+                <label for="maxPrice" class="form-label small">Max Price</label>
+                <input id="maxPrice" type="number" class="form-control" placeholder="999" min="0">
+              </div>
+            </div>
+
+            <label class="form-label small">Quick Range</label>
+            <div class="d-flex gap-2">
+              <button type="button" class="btn btn-sm btn-outline-secondary">Under $25</button>
+              <button type="button" class="btn btn-sm btn-outline-secondary">$25 - $100</button>
+              <button type="button" class="btn btn-sm btn-outline-secondary">Above $100</button>
+            </div>
+          </div>
+
+          <!-- Search Tab -->
+          <div class="tab-pane fade" id="search" role="tabpanel" aria-labelledby="search-tab">
+            <div class="mb-3">
+              <label for="searchInput" class="form-label small">Search</label>
+              <input id="searchInput" type="search" class="form-control" placeholder="Search by title, tag or sku">
+            </div>
+            <div class="form-check form-switch">
+              <input class="form-check-input" type="checkbox" id="inStockOnly">
+              <label class="form-check-label small" for="inStockOnly">In stock only</label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-link" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal" (click)="reset()">Reset</button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="onSubmit()">Apply Filters</button>
+      </div>
+    </div>
+  </div>
+</div>

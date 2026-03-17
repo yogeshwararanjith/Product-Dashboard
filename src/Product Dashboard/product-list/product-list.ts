@@ -4,10 +4,11 @@ import { FilterList } from '../filter-list/filter-list';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { debounceTime, distinctUntilChanged, filter, Subject, switchMap, takeUntil } from 'rxjs';
 import { Product } from '../../services/products';
+import { AppHighlight } from '../../Shared/app-highlight';
 
 @Component({
   selector: 'app-product-list',
-  imports: [FilterList, ReactiveFormsModule],
+  imports: [FilterList, ReactiveFormsModule, AppHighlight],
   templateUrl: './product-list.html',
   styleUrl: './product-list.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
